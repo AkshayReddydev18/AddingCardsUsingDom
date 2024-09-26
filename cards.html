@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricketer Cards</title>
+    <style>
+      .card {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 10px;
+        width: 150px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .card img {
+        width: 100%;
+        border-radius: 10px;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="cricketerContainer"></div>
+    <button id="addCardButton">Add Cricketer Card</button>
+
+    <script>
+      const cricketers = [
+        {
+          name: "Sachin Tendulkar",
+          image: "sachincard.jpeg",
+          Role: "Right Handed Batsman",
+        },
+        {
+          name: " Gautam Gambir ",
+          image: "gambircard.jpg ",
+          Role: "Left Handed Batsman",
+        },
+        {
+          name: "MS Dhoni",
+          image: "msdhoni.jpeg",
+          Role: "Right Handed Batsman,keeper",
+        },
+        {
+          name: "Virat Kohli",
+          image: "viratcard.jpeg",
+          Role: "Right Handed Batsman",
+        },
+        {
+          name: " Rohit Sharma",
+          image: "rohitcard.jpg ",
+          Role: "Right Handed Batsman",
+        },
+        {
+          name: " Hardik Pandya",
+          image: "pabdacard.avif ",
+          Role: "Right Handed Batsman,Fastbowler",
+        },
+        {
+          name: " Shubmam Gill",
+          image: " gillcard.avif",
+          Role: "Right Handed Batsman",
+        },
+      ];
+
+      let currentIndex = 0;
+
+      const container = document.getElementById("cricketerContainer");
+      const button = document.getElementById("addCardButton");
+
+      button.addEventListener("click", () => {
+        if (currentIndex < cricketers.length) {
+          const cricketer = cricketers[currentIndex];
+          const card = document.createElement("div");
+          card.className = "card";
+
+          const img = document.createElement("img");
+          img.src = cricketer.image;
+          img.alt = cricketer.name;
+          img.style.height = "150px";
+
+          const name = document.createElement("h3");
+          name.innerText = cricketer.name;
+
+          const role = document.createElement("h4");
+          role.innerText = cricketer.Role;
+
+          card.appendChild(img);
+          card.appendChild(name);
+          card.appendChild(role);
+          container.appendChild(card);
+
+          currentIndex++;
+        } else {
+          alert("No more cricketers to add!");
+        }
+      });
+    </script>
+  </body>
+</html>
